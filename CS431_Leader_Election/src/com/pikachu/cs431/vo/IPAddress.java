@@ -79,7 +79,6 @@ public class IPAddress implements Comparable
 	{
 
 		if(o==null) return 0;
-		
 		if(o instanceof IPAddress)
 		{
 			IPAddress ipAddress = (IPAddress) o;
