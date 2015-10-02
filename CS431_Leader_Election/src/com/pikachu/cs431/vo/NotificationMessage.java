@@ -17,13 +17,6 @@ public class NotificationMessage extends Message
 
 	/**
 	 * Constructors of NotificationMessage.
-	 */
-	public NotificationMessage()
-	{
-	}
-
-	/**
-	 * Constructors of NotificationMessage.
 	 * 
 	 * @param sender
 	 * @param leaderIndex

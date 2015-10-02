@@ -6,9 +6,7 @@ public class ChanllengeMessage extends Message {
 
 	private int currentWinnerIndex;
 	
-	public ChanllengeMessage() {}
-	
-	public ChanllengeMessage(int sender,int currentWinnerIndex) {
+	public ChanllengeMessage(int sender, int currentWinnerIndex) {
 	    super(sender);
 	    this.currentWinnerIndex=currentWinnerIndex;
 	}
