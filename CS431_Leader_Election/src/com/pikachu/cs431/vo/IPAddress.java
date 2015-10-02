@@ -13,6 +13,24 @@ package com.pikachu.cs431.vo;
 @SuppressWarnings("rawtypes")
 public class IPAddress implements Comparable
 {
+	/**	 * 
+	 * Constructors of IPAddress.
+	 */
+	public IPAddress()
+	{		
+	}
+	
+	/**	 * 
+	 * Constructors of IPAddress.
+	 * @param ip IPv4 address
+	 * @param port port number
+	 */
+	public IPAddress(String ip, int port)
+	{		
+		this.ip = ip;
+		this.port = port;
+	}
+	
 	private String ip;
 	
 	private int port;
@@ -61,6 +79,7 @@ public class IPAddress implements Comparable
 	{
 
 		if(o==null) return 0;
+		
 		if(o instanceof IPAddress)
 		{
 			IPAddress ipAddress = (IPAddress) o;
@@ -81,5 +100,11 @@ public class IPAddress implements Comparable
 		}
 		
 		return 0;			
+	}	
+	
+	@Override
+	public boolean equals(Object obj){
+		return false;
+		
 	}
 }
