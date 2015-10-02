@@ -59,6 +59,8 @@ public class IPAddress implements Comparable
 	@Override
 	public int compareTo(Object o)
 	{
+
+		if(o==null) return 0;
 		if(o instanceof IPAddress)
 		{
 			IPAddress ipAddress = (IPAddress) o;
