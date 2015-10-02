@@ -70,6 +70,13 @@ public class MainFuction
 
 		// reading from local file to get all ips and ports
 		ipList = DBHandler.readSortedIPs();
+		
+		if(0 == ipList.size())
+		{
+			System.out.println("Error for reading DB file. Quitting.");
+			return;
+		}
+		
 		IPAddress localIP = null;
 
 		try
@@ -97,10 +104,23 @@ public class MainFuction
 			middlePoint = (totalNodes - 1) / 2;
 		}
 
+		// 1 actor doesn't need to start
+		if (1 == totalNodes)
+		{
+			System.out.println("The leader: " + id);
+			return;
+		}
+
 		// the 1st and last one needs to start their jobs
 		if (0 == id || totalNodes - 1 == id)
 		{
 			need2Start = true;
+		}
+		// 2 actors only needs node 1 connects node 2
+		// node 2 connects node 1 is redundant
+		if(2 == totalNodes && totalNodes - 1 == id)
+		{
+			need2Start = false;
 		}
 
 		if (null == id || null == ipList || null == totalNodes || null == middlePoint)

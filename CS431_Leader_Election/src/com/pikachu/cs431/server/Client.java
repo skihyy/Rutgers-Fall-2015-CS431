@@ -7,7 +7,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import com.pikachu.cs431.tool.CloseUtil;
-import com.pikachu.cs431.vo.ChanllengeMessage;
 import com.pikachu.cs431.vo.IPAddress;
 import com.pikachu.cs431.vo.Message;
 
@@ -24,7 +23,7 @@ public class Client implements Runnable, Serializable
 	private static final long serialVersionUID = 1L;
 
 	private IPAddress ipAddress;
-	
+
 	private Message message;
 
 	public Client(IPAddress ipAddress, Message message)
@@ -50,17 +49,18 @@ public class Client implements Runnable, Serializable
 		}
 		return socket;
 	}
+
 	@Override
 	public void run()
 	{
 		// Socket
-		Socket socket=Client.getConnection(ipAddress.getIp(),ipAddress.getPort());
-		
+		Socket socket = Client.getConnection(ipAddress.getIp(), ipAddress.getPort());
+
 		ObjectOutputStream oos = null;
 		try
 		{
 			oos = new ObjectOutputStream(socket.getOutputStream());
-			
+
 			System.out.println("client=>" + message.toString());
 			oos.writeObject(message);
 		}
