@@ -43,13 +43,11 @@ public class Client implements Runnable,Serializable {
 		return socket;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void startClient(){
 		Client client = new Client();
 		Thread t_client = new Thread(client);
 		t_client.start(); 
 	}
-
 
 	@Override
 	public void run() {

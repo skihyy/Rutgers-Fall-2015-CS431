@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.pikachu.cs431.tool.CloseUtil;
 import com.pikachu.cs431.vo.Message;
 
 
@@ -34,16 +33,7 @@ public class Server implements Runnable,Serializable {
 		this.socket = socket;
 	}
 
-	public static void main(String[] args) {
-
-		if (args[0] == null || args.length == 0) {
-			try {
-				throw new Exception("the port cannot be NULL");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		int port = Integer.valueOf(args[0]);
+	public static void startServer(int port){
 		try {
 			serverSocket = new ServerSocket(port);
 		} catch (IOException e1) {
@@ -60,9 +50,8 @@ public class Server implements Runnable,Serializable {
 				e.printStackTrace();
 			}
 		}
-
 	}
-
+	
 	@Override
 	public void run() {
 		
