@@ -14,6 +14,10 @@ package com.pikachu.cs431.vo;
 @SuppressWarnings("rawtypes")
 public class IPAddress implements Comparable
 {
+	private String ip;
+
+	private int port;
+
 	/**
 	 * * Constructors of IPAddress.
 	 */
@@ -34,10 +38,6 @@ public class IPAddress implements Comparable
 		this.ip = ip;
 		this.port = port;
 	}
-
-	private String ip;
-
-	private int port;
 
 	/**
 	 * Getter of ip.
