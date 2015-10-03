@@ -1,6 +1,9 @@
 package com.pikachu.cs431.tool;
 
 import java.io.Closeable;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * Close any thing can be closed.
@@ -21,31 +24,46 @@ public class CloseUtil
 	 */
 	public static void closeAll(Object... o)
 	{		
-		for (Object tmp : o)
+		for (Object c : o)
 		{
-			if(null == tmp)
-			{
-				continue;
-			}
-			
-			if(!(tmp instanceof  Closeable))
-			{
-				continue;
-			}
-			
-			Closeable c = (Closeable)tmp;
-			
 			if (null != c)
 			{
-				try
+				if(c instanceof Closeable)
 				{
-					c.close();
+				    try
+					{
+						((Closeable)c).close();
+					}
+					catch (IOException e)
+					{
+						System.out.println("IOException occured. Check stream.");
+						e.printStackTrace();
+					}
 				}
-				catch (Exception e)
-				{
-					System.out.println("Exception occured.");
-					e.printStackTrace();
-				}
+				 else if(c instanceof Socket)
+				 {
+					try
+					{
+						((Socket)c).close();
+					}
+					catch (IOException e)
+					{
+						System.out.println("Socket close error.");
+						e.printStackTrace();
+					}
+				 }
+				 else if(c instanceof ServerSocket)
+				 {
+					try
+					{
+						((ServerSocket) c).close();
+					}
+					catch (IOException e)
+					{
+						System.out.println("Server socket close error.");
+						e.printStackTrace();
+					}
+				 }
 			}
 		}
 	}
