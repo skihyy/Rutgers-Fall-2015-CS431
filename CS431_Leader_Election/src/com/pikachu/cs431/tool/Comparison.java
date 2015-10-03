@@ -39,7 +39,7 @@ public class Comparison
 		// no need to compare
 		if (winner == challenger)
 		{
-			System.out.println("Winner: node " + challenger);
+			System.out.println("Winner ID: " + challenger);
 			System.out.println("-------------------");
 			return challenger;
 		}
@@ -72,23 +72,23 @@ public class Comparison
 		int randomNum = -1;
 		if (middleNodeIndex == challenger)
 		{
-			randomNum = random.nextInt(totalNodes + 1);
+			randomNum = random.nextInt(totalNodes);
 		} else
 		{
-			randomNum = random.nextInt(effectiveCurrentNodeID + 1);
+			randomNum = random.nextInt(effectiveCurrentNodeID);
 		}
 		System.out.println("Random number generated: " + randomNum);
 
 		if (0 == randomNum)
 		{
-			System.out.println("Winner: node " + challenger);
-			System.out.println("-------------------");
-			return challenger;
-		} else
-		{
-			System.out.println("Winner: node " + winner);
+			System.out.println("Winner ID: " + winner);
 			System.out.println("-------------------");
 			return winner;
+		} else
+		{
+			System.out.println("Winner ID: " + challenger);
+			System.out.println("-------------------");
+			return challenger;
 		}
 	}
 }

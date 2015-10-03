@@ -16,31 +16,35 @@ import java.io.Serializable;
 public abstract class Message implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-
-	private int sender;
 	
 	/**
-	 * msg mode
-	 * 0 -> challenge
-	 * 1 -> notification
+	 * challenge message
 	 */
-	private int mode;
-
+	public static final int CHALLENGE_MSG = 0;
+	
 	/**
-	 * Constructors of Message.
+	 * notification message
 	 */
-	public Message()
-	{
-	}
+	public static final int NOTIFICATION_MSG = 1;
+
+	protected int sender;
+	
+	/**
+	 * message type
+	 * 0 -> challenge message
+	 * 1 -> notification message
+	 */
+	protected int messageType;
 
 	/**
 	 * Constructors of Message.
 	 * 
 	 * @param sender
 	 */
-	public Message(int sender)
+	public Message(int sender, int messageType)
 	{
 		this.sender = sender;
+		this.messageType = messageType;
 	}
 
 	/**
@@ -60,20 +64,31 @@ public abstract class Message implements Serializable
 	}
 
 	/**
-	 * Getter of mode.
-	 * @return the mode
+	 * Getter of messageType.
+	 * @return the messageType
 	 */
-	public int getMode()
+	public int getMessageType()
 	{
-		return mode;
+		return messageType;
 	}
 
 	/**
-	 * Setter of mode.
-	 * @param mode the mode to set
+	 * Setter of messageType.
+	 * @param messageType the messageType to set
 	 */
-	public void setMode(int mode)
+	public void setMessageType(int messageType)
 	{
-		this.mode = mode;
+		this.messageType = messageType;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return "Sender: " + sender + ", message type: " + messageType;
+	}
+	
+	
 }

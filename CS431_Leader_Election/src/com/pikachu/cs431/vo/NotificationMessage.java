@@ -23,7 +23,7 @@ public class NotificationMessage extends Message
 	 */
 	public NotificationMessage(int sender, int leaderIndex)
 	{
-		super(sender);
+		super(sender, Message.NOTIFICATION_MSG);
 		this.leaderIndex = leaderIndex;
 	}
 
@@ -46,7 +46,7 @@ public class NotificationMessage extends Message
 	@Override
 	public String toString()
 	{
-		return "NotificationMessage [leaderIndex=" + leaderIndex + "]";
+		return "Sender: " + super.sender + ", message type: " + super.messageType + ", leader ID: " + leaderIndex;
 	}
 
 }

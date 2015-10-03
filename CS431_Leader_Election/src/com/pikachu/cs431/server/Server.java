@@ -52,26 +52,25 @@ public class Server implements Serializable
 			e1.printStackTrace();
 		}
 
-		System.out.println("Waiting for client connection...");
+		System.out.println("Waiting for client connection.");
 
 		try
 		{
 			Socket socket = serverSocket.accept();
-			System.out.println("accepet singal from client");
-			// new Thread(new Server(socket)).start();
+			System.out.println("Client connects.");
+
 			ObjectInputStream ois = null;
+
 			try
 			{
 				ois = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
 				Object o = ois.readObject();
 				if (!(o instanceof Message))
 				{
-					throw new Exception("NOT the Message");
+					throw new Exception("Received information is not message. Skip.");
 				}
 
 				message = (Message) o;
-				System.out.println(message.toString());
-
 			}
 			catch (IOException e)
 			{
@@ -94,7 +93,6 @@ public class Server implements Serializable
 		{
 			e.printStackTrace();
 		}
-
 	}
 
 	/**

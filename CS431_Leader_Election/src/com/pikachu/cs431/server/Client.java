@@ -61,7 +61,7 @@ public class Client implements Runnable, Serializable
 		{
 			oos = new ObjectOutputStream(socket.getOutputStream());
 
-			System.out.println("client=>" + message.toString());
+			System.out.println("Sending message: " + message.toString());
 			oos.writeObject(message);
 		}
 		catch (IOException e)
