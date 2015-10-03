@@ -1,0 +1,12 @@
+Rutgers University, New Brunswick Campus
+Department of Computer Science
+CS 431 Software Engineering
+
+Team "Pikachu"
+Yuyang He, Tengfei Peng, Li Yin, & Hugo Nakagawa
+
+This project is the contribution of the whole group which is appreciated.
+
+Now missing:
+1 Analysis document
+2 Shell script
