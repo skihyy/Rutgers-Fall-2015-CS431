@@ -70,13 +70,13 @@ public class MainFuction
 
 		// reading from local file to get all ips and ports
 		ipList = DBHandler.readSortedIPs();
-		
-		if(0 == ipList.size())
+
+		if (0 == ipList.size())
 		{
 			System.out.println("Error for reading DB file. Quitting.");
 			return;
 		}
-		
+
 		IPAddress localIP = null;
 
 		try
@@ -118,7 +118,7 @@ public class MainFuction
 		}
 		// 2 actors only needs node 1 connects node 2
 		// node 2 connects node 1 is redundant
-		if(2 == totalNodes && totalNodes - 1 == id)
+		if (2 == totalNodes && totalNodes - 1 == id)
 		{
 			need2Start = false;
 		}
@@ -130,6 +130,7 @@ public class MainFuction
 		}
 
 		// server starts...
+		// waiting results
 		serviceStart(port);
 	}
 
@@ -177,7 +178,8 @@ public class MainFuction
 		sendBattleMsg();
 
 		// then waiting for results;
-		server.startServer();
+		Server server4Leader = new Server(port);
+		server4Leader.startServer();
 		NotificationMessage notificationMessage = (NotificationMessage) server.getMessage();
 		int leader = notificationMessage.getLeaderIndex();
 		currentWinner = leader;
@@ -210,7 +212,7 @@ public class MainFuction
 	 */
 	private static IPAddress getNextIP()
 	{
-		if (id < middlePoint)
+		if (id <= middlePoint)
 		{
 			return ipList.get(id + 1);
 		} else
