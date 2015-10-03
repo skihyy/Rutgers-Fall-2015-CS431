@@ -19,10 +19,22 @@ public class CloseUtil
 	 * @param io
 	 *            any thing may be closed
 	 */
-	public static void closeAll(Closeable... io)
-	{
-		for (Closeable c : io)
+	public static void closeAll(Object... o)
+	{		
+		for (Object tmp : o)
 		{
+			if(null == tmp)
+			{
+				continue;
+			}
+			
+			if(!(tmp instanceof  Closeable))
+			{
+				continue;
+			}
+			
+			Closeable c = (Closeable)tmp;
+			
 			if (null != c)
 			{
 				try
@@ -31,6 +43,7 @@ public class CloseUtil
 				}
 				catch (Exception e)
 				{
+					System.out.println("Exception occured.");
 					e.printStackTrace();
 				}
 			}

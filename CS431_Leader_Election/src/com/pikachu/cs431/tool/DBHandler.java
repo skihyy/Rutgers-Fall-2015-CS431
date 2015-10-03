@@ -16,7 +16,7 @@ import java.util.List;
 import com.pikachu.cs431.vo.IPAddress;
 
 /**
- * This function will read local disk to get all ips and ports.
+ * This function will read local disk to get all IP addresses and ports.
  * 
  * @author Yuyang He
  * @date 1:13:52 AM, Oct 3, 2015
@@ -84,31 +84,7 @@ public class DBHandler
 			}
 			finally
 			{
-				if (null != br)
-				{
-					try
-					{
-						br.close();
-					}
-					catch (IOException e)
-					{
-						System.out.println("IO exception occured when closing buffered reader.");
-						e.printStackTrace();
-					}
-				}
-
-				if (null != isr)
-				{
-					try
-					{
-						isr.close();
-					}
-					catch (IOException e)
-					{
-						System.out.println("IO exception occured when closing input stream reader.");
-						e.printStackTrace();
-					}
-				}
+				CloseUtil.closeAll(br, isr);
 			}
 		}
 
