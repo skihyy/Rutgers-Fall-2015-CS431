@@ -25,8 +25,23 @@ public class MainFuction
 	 * @param args
 	 *            1st parameter is the port number.
 	 */
+	@SuppressWarnings("static-access")
 	public static void main(String[] args)
 	{
+		// in order to make sure every actor is activated
+		// has to sleep 10 sec before any process is initialized
+		System.out.println("Sleeping 10 sec. Current time is " + System.currentTimeMillis());
+		try
+		{
+			Thread.currentThread().sleep(10000);
+		}
+		catch (InterruptedException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println("Sleeping Complete. Current time is " + System.currentTimeMillis());
+		
 		if (1 != args.length)
 		{
 			System.out.println("No port number is entered. Program will quit.");
@@ -53,6 +68,7 @@ public class MainFuction
 			return;
 		}
 
+		// service for selecting leaders
 		Service service = new Service(ipList, port);
 
 		// 1 actor doesn't need to start

@@ -14,7 +14,7 @@ import com.pikachu.cs431.tool.CloseUtil;
 import com.pikachu.cs431.vo.Message;
 
 /**
- * 
+ * Server is used for receiving messages.
  * @author Tengfei peng
  * @date 下午2:03:42, 2015年10月2日
  * @version 1.0
@@ -41,6 +41,9 @@ public class Server implements Serializable
 		this.port = port;
 	}
 
+	/**
+	 * The initialization of server service.
+	 */
 	public void startServer()
 	{
 		try
@@ -71,6 +74,7 @@ public class Server implements Serializable
 				}
 
 				message = (Message) o;
+				System.out.println("Message received: " + message);
 			}
 			catch (IOException e)
 			{

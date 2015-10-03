@@ -223,7 +223,6 @@ public class Service
 			int leaderID = nmsg.getLeaderIndex();
 			// winner is leader
 			this.currentWinner = leaderID;
-			System.out.println("Notification messge received. Leader ID: " + leaderID);
 		}
 	}
 
@@ -391,6 +390,10 @@ public class Service
 				return ipList.get(id - 1);
 			} else
 			{
+				// even condition
+				// if 8 nodes (ID from 0 - 7)
+				// node 5 should connect 3
+				// instead of 4
 				if (middlePoint + 1 == id - 1)
 				{
 					return ipList.get(middlePoint);
