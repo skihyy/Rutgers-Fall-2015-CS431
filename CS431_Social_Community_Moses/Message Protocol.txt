@@ -1,0 +1,92 @@
+A) Type of messages one can send
+	1 Stranger
+		1) to DB (ask information or login)
+			DB@127.0.0.1 hello
+			DB@127.0.0.1 login|username|password
+		2) to a Manager (chat)
+			manager@127.0.0.1 hello
+		3) to a Manager (apply)
+			manager@127.0.0.1 apply|join
+			
+	2 Member
+		1) chat 
+			member@127.0.0.1 hello
+		2) apply for broadcasting
+			manager@127.0.0.1 broadcast|message
+
+	3 Manager
+		1) chat (to a stranger/member/manager)
+			stranger@127.0.0.1 hello
+		2) to decide a decision
+			A manager should use the following format to send decision:
+				manager@127.0.0.1 applicationID|approved
+				manager@127.0.0.1 applicationID|denied
+			After that, the decision sent to the applicant will be automatically transferred in following format:
+				applicant@127.0.0.1 Your application for join the community has been approved.
+				applicant@127.0.0.1 Your application for join the community has been denied.
+				applicant@127.0.0.1 Your application for broadcasting a message has been approved.
+				applicant@127.0.0.1 Your application for broadcasting a message has been denied.
+	
+	4 Database
+		1) log in result
+			stranger@127.0.0.1 login|success|member
+			stranger@127.0.0.1 login|success|manager|member1@127.0.0.1|member2@127.0.0.2
+			stranger@127.0.0.1 login|failed
+		
+		2) give addresses to a stranger
+			stranger@127.0.0.1 address|manager1@127.0.0.1|manager2@127.0.0.2
+			
+B) Type of messages one can receive
+	1 Stranger
+		1) from DB
+			stranger@127.0.0.1 login|success|member
+			stranger@127.0.0.1 login|success|manager|member1@127.0.0.1|member2@127.0.0.2
+			stranger@127.0.0.1 login|failed
+		
+		2) from a manager
+			stranger@127.0.0.1 hello
+	
+	2 Member (from everyone)
+		manager@127.0.0.1 message
+		
+	3 Manager
+		1) from a stranger
+			manager@127.0.0.1 hello
+			manager@127.0.0.1 apply|join
+			
+		2) from a member
+			manager@127.0.0.1 hello
+			manager@127.0.0.1 broadcast|message
+			
+		3) from herself
+			manager@127.0.0.1 applicationID|approved
+			manager@127.0.0.1 hello
+	
+	4 Database (from a stranger)
+		databaseb@127.0.0.1 hello
+		databaseb@127.0.0.1 login|password
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
