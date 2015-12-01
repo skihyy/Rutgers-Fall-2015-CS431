@@ -18,12 +18,6 @@ public class SocialLaw extends Law
 	public static final String DATABASE = "db@171.31.242.4";
 
 	/**
-	 * message type
-	 */
-	public static final int CHAT = 0;
-	public static final int APPLICATION = 1;
-
-	/**
 	 * manager list is only for a stranger to communicate assuming every member
 	 * knows managers
 	 */
@@ -35,15 +29,15 @@ public class SocialLaw extends Law
 	private String[] memberList = null;
 
 	/**
-	 * these three arrays are only for a manager to deal with application
-	 * applicationID -> key -> the name + address of the applicant
-	 * applicationType -> value 1 applicationContext -> value 2
+	 * These three arrays are only for a manager to deal with application.
+	 * ApplicationID is the key of an application with format: applicant@127.0.0.1
 	 */
 	private String[] applicationID = null;
 
 	/**
-	 * applicationType = 0 -> join the community -> null applicationType = 1 ->
-	 * broadcast -> message for applicant
+	 * Application context is the value of the application map.
+	 * If it is an application to join, it has the format: apply|join.
+	 * If it is an application to broadcast, it has the format: broadcast|message.
 	 */
 	private String[] applicationContext = null;
 
