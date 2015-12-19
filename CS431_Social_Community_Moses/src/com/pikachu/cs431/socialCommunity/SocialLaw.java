@@ -196,7 +196,7 @@ public class SocialLaw extends Law
 		 */
 		if (DATABASE.equals(Self) && dest.equals(Self))
 		{
-			dbHandler(source, message, dest);
+			//dbHandler(source, message, dest);
 			return;
 		}
 
